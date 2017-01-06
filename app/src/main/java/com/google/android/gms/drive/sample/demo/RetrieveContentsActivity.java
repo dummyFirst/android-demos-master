@@ -40,7 +40,11 @@ public class RetrieveContentsActivity extends BaseDemoActivity {
     @Override
     public void onConnected(Bundle connectionHint) {
         super.onConnected(connectionHint);
+        /*
         Drive.DriveApi.fetchDriveId(getGoogleApiClient(), EXISTING_FILE_ID)
+                .setResultCallback(idCallback); */
+        String link = "0B14WIXqcgh_YRUJkV0FtWVFrZDg" ;
+        Drive.DriveApi.fetchDriveId(getGoogleApiClient(), link)
                 .setResultCallback(idCallback);
     }
 
@@ -62,6 +66,7 @@ public class RetrieveContentsActivity extends BaseDemoActivity {
         @Override
         protected String doInBackgroundConnected(DriveId... params) {
             String contents = null;
+            if( params == null ) return null;
             DriveFile file = params[0].asDriveFile();
             DriveContentsResult driveContentsResult =
                     file.open(getGoogleApiClient(), DriveFile.MODE_READ_ONLY, null).await();

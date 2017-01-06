@@ -31,8 +31,12 @@ public class RetrieveMetadataActivity extends BaseDemoActivity {
 
     @Override
     public void onConnected(Bundle connectionHint) {
-      Drive.DriveApi.fetchDriveId(getGoogleApiClient(), EXISTING_FILE_ID)
-              .setResultCallback(idCallback);
+      //Drive.DriveApi.fetchDriveId(getGoogleApiClient(), EXISTING_FILE_ID)
+        //      .setResultCallback(idCallback);
+        String link = "0B14WIXqcgh_YRUJkV0FtWVFrZDg" ;
+        Drive.DriveApi.fetchDriveId(getGoogleApiClient(), link)
+                .setResultCallback(idCallback);
+
     }
 
     final private ResultCallback<DriveIdResult> idCallback = new ResultCallback<DriveIdResult>() {
